@@ -10,12 +10,12 @@ public class ApiObjectStat {
 
     // The values from the db
     String name;
-    float totalHours;
+    int totalHours;
 
     //endregion
 
     /* Constructor */
-    public ApiObjectStat(String _name, float _totalHours)
+    public ApiObjectStat(String _name, int _totalHours)
     {
         name = _name;
         totalHours = _totalHours;
@@ -25,7 +25,7 @@ public class ApiObjectStat {
     //region PUBLIC ACCESSORS
 
     public String getName() { return name; }
-    public float getTotalHours() { return totalHours; }
+    public int getTotalHours() { return totalHours; }
 
     //endregion
 
