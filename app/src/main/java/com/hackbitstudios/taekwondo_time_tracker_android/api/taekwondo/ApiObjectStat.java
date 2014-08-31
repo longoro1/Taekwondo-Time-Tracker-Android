@@ -27,6 +27,10 @@ public class ApiObjectStat {
     public String getName() { return name; }
     public int getTotalHours() { return totalHours; }
 
+    public String getStat() {
+        return name + " - " + new Integer(totalHours).toString() + " H";
+    }
+
     //endregion
 
 }

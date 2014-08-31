@@ -49,7 +49,6 @@ public abstract class ApiDownloaderStat extends ApiDownloader {
             // Process the entity as a JSON Array
             JSONArray jsonArray = new JSONArray(EntityUtils.toString(_entity));
 
-
             // Finally, get the string
             // Add every object in array to Array List
             for (int i = 0; i < jsonArray.length(); i++){
