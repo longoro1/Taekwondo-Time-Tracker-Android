@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.hackbitstudios.taekwondo_time_tracker_android.R;
 import com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.ApiDownloaderStat;
 import com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.ApiModelStat;
 import com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.ApiObjectStat;
@@ -28,12 +27,12 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this); // So ButterKnife works
 
         // Main Code
         populateStatList();
-
     }
 
 
