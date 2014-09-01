@@ -1,4 +1,4 @@
-package com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo;
+package com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.Purpose;
 
 import com.hackbitstudios.taekwondo_time_tracker_android.api.ApiDownloader;
 import com.hackbitstudios.taekwondo_time_tracker_android.api.ApiModel;
@@ -11,21 +11,21 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 /**
- * Created by Robert on 8/31/2014.
- * This class extends the ApiDownloader to download stats from the database
+ * Created by Robert on 9/1/2014.
+ * This class extends the api downloader and is able to download purposes from the db
  */
-public abstract class ApiDownloaderStat extends ApiDownloader {
+public abstract class ApiDownloaderPurpose extends ApiDownloader {
 
     //region MEMBERS
-    ArrayList<ApiObjectStat> statArrayList;
+    ArrayList<ApiObjectPurpose> purposeArrayList;
     //endregion
 
     //region CTOR
-    public ApiDownloaderStat(ApiModel _apiModel){
+    public ApiDownloaderPurpose(ApiModel _apiModel){
         super(_apiModel);
 
         // Initialize the array list
-        statArrayList = new ArrayList<ApiObjectStat>();
+        purposeArrayList = new ArrayList<ApiObjectPurpose>();
     }
 
     //endregion
@@ -36,7 +36,7 @@ public abstract class ApiDownloaderStat extends ApiDownloader {
     {
         super.onPostExecute(result);
 
-        onResponse (statArrayList, wasSuccessful, error);
+        onResponse (purposeArrayList, wasSuccessful, error);
     }
 
     /* Processes the HTTP Entity and spits out the result in the form of an Array List */
@@ -50,7 +50,7 @@ public abstract class ApiDownloaderStat extends ApiDownloader {
             // Finally, get the string
             // Add every object in array to Array List
             for (int i = 0; i < jsonArray.length(); i++){
-                statArrayList.add(getStat(jsonArray.getJSONObject(i)));
+                purposeArrayList.add(getPurpose(jsonArray.getJSONObject(i)));
             }
             wasSuccessful = true;
 
@@ -77,14 +77,14 @@ public abstract class ApiDownloaderStat extends ApiDownloader {
 
     //region PUBLIC METHODS
 
-    /* Invoked the constructor of the APIAppointment using values in the JSONObject
+    /* Invoked the constructor of the ApiObjectPurpose using values in the JSONObject
     * _object:: one item in the JSONArray
     * RETURNS:: the constructed class */
-    private ApiObjectStat getStat (JSONObject _object) {
+    private ApiObjectPurpose getPurpose (JSONObject _object) {
 
         try {
             // Try to construct the object
-            return new ApiObjectStat(_object.getString("name"), _object.getInt("total_hours"));
+            return new ApiObjectPurpose(_object.getString("name"), _object.getInt("id"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -93,10 +93,8 @@ public abstract class ApiDownloaderStat extends ApiDownloader {
     }
 
     /* Return stats and error information to calling class */
-    public abstract void onResponse(ArrayList<ApiObjectStat> stats, boolean wasSuccessful, String error);
-
+    public abstract void onResponse(ArrayList<ApiObjectPurpose> purpose, boolean wasSuccessful, String error);
 
     //endregion
-
 
 }

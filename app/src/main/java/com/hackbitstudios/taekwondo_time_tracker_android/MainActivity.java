@@ -10,9 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.ApiDownloaderStat;
-import com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.ApiModelStat;
-import com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.ApiObjectStat;
+import com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.Stat.ApiDownloaderStat;
+import com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.Stat.ApiModelStat;
+import com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.Stat.ApiObjectStat;
 
 import java.util.ArrayList;
 import android.preference.PreferenceManager;

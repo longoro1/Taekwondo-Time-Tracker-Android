@@ -1,4 +1,4 @@
-package com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo;
+package com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.Stat;
 
 /**
  * Created by Robert on 8/31/2014.
