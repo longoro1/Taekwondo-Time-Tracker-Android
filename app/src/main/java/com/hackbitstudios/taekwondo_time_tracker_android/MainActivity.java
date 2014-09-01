@@ -68,7 +68,12 @@ public class MainActivity extends Activity {
 
         // Add a new punchcard
         else if (id == R.id.action_new) {
-
+            try {
+                Intent intent = new Intent(this, PunchcardActivity.class);
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return true;
         }
 
