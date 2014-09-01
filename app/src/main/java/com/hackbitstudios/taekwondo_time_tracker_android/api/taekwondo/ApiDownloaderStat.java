@@ -18,8 +18,6 @@ public abstract class ApiDownloaderStat extends ApiDownloader {
 
     //region MEMBERS
     ArrayList<ApiObjectStat> statArrayList;
-    boolean isError = false;
-    String error = "Unknown Error";
     //endregion
 
     //region CTOR
@@ -38,7 +36,7 @@ public abstract class ApiDownloaderStat extends ApiDownloader {
     {
         super.onPostExecute(result);
 
-        onResponse(statArrayList, isError, error);
+        onResponse (statArrayList, wasSuccessful, error);
     }
 
     /* Processes the HTTP Entity and spits out the result in the form of an Array List */
@@ -54,23 +52,20 @@ public abstract class ApiDownloaderStat extends ApiDownloader {
             for (int i = 0; i < jsonArray.length(); i++){
                 statArrayList.add(getStat(jsonArray.getJSONObject(i)));
             }
-            isError = false;
-            error = "";
+            wasSuccessful = true;
 
         } catch (Exception e) {
             e.printStackTrace();
 
             try {
                 JSONObject jsonObject= new JSONObject(EntityUtils.toString(_entity));
+
                 if (jsonObject.getString("response_type").equals("error"))
-                {
                     error = jsonObject.getString("response");
-                }
                 else
-                {
                     error = "Unknown Error";
-                }
-                isError = true;
+
+                wasSuccessful = false;
             } catch (Exception e2)
             {
                 e2.printStackTrace();
@@ -98,7 +93,7 @@ public abstract class ApiDownloaderStat extends ApiDownloader {
     }
 
     /* Return stats and error information to calling class */
-    public abstract void onResponse(ArrayList<ApiObjectStat> stats, boolean isError, String error);
+    public abstract void onResponse(ArrayList<ApiObjectStat> stats, boolean wasSuccessful, String error);
 
 
     //endregion

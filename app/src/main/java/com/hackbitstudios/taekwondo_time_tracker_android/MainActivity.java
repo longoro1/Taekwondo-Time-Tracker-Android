@@ -94,10 +94,10 @@ public class MainActivity extends Activity {
         ApiDownloaderStat apiDownloaderStat = new ApiDownloaderStat(apiModelStat) {
 
             @Override
-            public void onResponse(ArrayList<ApiObjectStat> stats, boolean isError, String error) {
+            public void onResponse(ArrayList<ApiObjectStat> stats, boolean wasSuccessful, String error) {
 
                 // Throw an error if needed
-                if (isError) {
+                if (!wasSuccessful) {
                     // Show a toast
                     Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG).show();
 
