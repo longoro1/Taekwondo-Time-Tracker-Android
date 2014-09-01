@@ -4,6 +4,10 @@
     <string name="app_name">Taekwondo-Time-Tracker-Android</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
+
+    <!-- Action bar items -->
     <string name="action_settings">Settings</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_add">Add Punchcard</string>
 
 </resources>

@@ -1,6 +1,8 @@
 package com.hackbitstudios.taekwondo_time_tracker_android;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +15,7 @@ import com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.ApiModelS
 import com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.ApiObjectStat;
 
 import java.util.ArrayList;
+import android.preference.PreferenceManager;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -36,7 +39,7 @@ public class MainActivity extends Activity {
     }
 
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
@@ -49,12 +52,29 @@ public class MainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
+        // Launch settings menu
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
+
+        // Refresh
+        else if (id == R.id.action_refresh) {
+            populateStatList();
+            return true;
+        }
+
+        // Add a new punchcard
+        else if (id == R.id.action_new) {
+
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
-    */
+
     //endregion
 
     //region PRIVATE FUNCTIONS
@@ -62,9 +82,13 @@ public class MainActivity extends Activity {
     // Function to launch an async task and populate the listview
     private void populateStatList() {
 
-        // Create an APIModel
-        //ApiModelStat apiModelStat = new ApiModelStat("http://192.168.1.6:3000", "472Pb1g_1YLXTGNZs7v9"); // DEV
-        ApiModelStat apiModelStat = new ApiModelStat("http://taekwondo-time-tracker.herokuapp.com", "s19o4zoUsC6FEgsyk-yj");  // HEROKU
+        // Get the preferences
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String url = sharedPreferences.getString("server_url_pref", "");
+        String access_token = sharedPreferences.getString("access_token_pref", "");
+
+        // Create the ApiModel
+        ApiModelStat apiModelStat = new ApiModelStat(url, access_token);
 
         // Create the downloader
         ApiDownloaderStat apiDownloaderStat = new ApiDownloaderStat(apiModelStat) {
