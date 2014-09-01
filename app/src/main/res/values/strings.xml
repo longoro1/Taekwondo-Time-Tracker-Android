@@ -3,7 +3,9 @@
 
     <string name="app_name">Taekwondo-Time-Tracker-Android</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="hello_world">Hello world!</string>
+
+    <!-- Main Activity Strings-->
+    <string name="main_title">Listing All Training Hours</string>
 
     <!-- Action bar items -->
     <string name="action_settings">Settings</string>
