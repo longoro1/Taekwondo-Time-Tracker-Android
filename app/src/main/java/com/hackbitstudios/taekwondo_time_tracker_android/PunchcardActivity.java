@@ -1,9 +1,12 @@
 package com.hackbitstudios.taekwondo_time_tracker_android;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -91,6 +94,9 @@ public class PunchcardActivity extends Activity {
         setSpinnerMenu(null); // Set to warning message
         getSpinnerMenuItems(); // Get real items
 
+        // Add back button to action bar
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
 
@@ -99,7 +105,7 @@ public class PunchcardActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.punchcard, menu);
         return true;
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -107,11 +113,12 @@ public class PunchcardActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == android.R.id.home) {
+            this.finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }*/
+    }
     //endregion
 
     //region PRIVATE METHODS

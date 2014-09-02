@@ -38,6 +38,13 @@ public class MainActivity extends Activity {
         populateStatList();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Main Code
+        populateStatList();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -87,6 +94,9 @@ public class MainActivity extends Activity {
     // Function to launch an async task and populate the listview
     private void populateStatList() {
 
+        // Show a toast
+        Toast.makeText(getApplicationContext(), "Attempting to get stats", Toast.LENGTH_SHORT).show();
+
         // Get the preferences
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String url = sharedPreferences.getString("server_url_pref", "");
@@ -111,6 +121,9 @@ public class MainActivity extends Activity {
 
                 // Not an error, display in listview
                 populateStatListHelper(stats);
+
+                // Show a toast
+                Toast.makeText(getApplicationContext(), "Finished getting stats", Toast.LENGTH_SHORT).show();
 
             }
         };
