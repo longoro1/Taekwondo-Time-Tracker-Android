@@ -1,4 +1,4 @@
-package com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.Purpose;
+package com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.purpose;
 
 import com.hackbitstudios.taekwondo_time_tracker_android.api.ApiModel;
 

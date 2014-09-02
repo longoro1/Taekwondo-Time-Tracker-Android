@@ -1,4 +1,4 @@
-package com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.Purpose;
+package com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.purpose;
 
 import com.hackbitstudios.taekwondo_time_tracker_android.api.ApiDownloader;
 import com.hackbitstudios.taekwondo_time_tracker_android.api.ApiModel;
@@ -75,7 +75,7 @@ public abstract class ApiDownloaderPurpose extends ApiDownloader {
 
     //endregion
 
-    //region PUBLIC METHODS
+    //region PRIVATE METHODS
 
     /* Invoked the constructor of the ApiObjectPurpose using values in the JSONObject
     * _object:: one item in the JSONArray
@@ -91,6 +91,9 @@ public abstract class ApiDownloaderPurpose extends ApiDownloader {
 
         return null;
     }
+    //endregion
+
+    //region PUBLIC METHODS
 
     /* Return stats and error information to calling class */
     public abstract void onResponse(ArrayList<ApiObjectPurpose> purpose, boolean wasSuccessful, String error);

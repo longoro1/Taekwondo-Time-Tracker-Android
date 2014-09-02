@@ -1,4 +1,4 @@
-package com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.Stat;
+package com.hackbitstudios.taekwondo_time_tracker_android.api.taekwondo.stat;
 
 import com.hackbitstudios.taekwondo_time_tracker_android.api.ApiDownloader;
 import com.hackbitstudios.taekwondo_time_tracker_android.api.ApiModel;
