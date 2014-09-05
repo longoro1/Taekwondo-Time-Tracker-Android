@@ -207,7 +207,7 @@ public class PunchcardActivity extends Activity {
         int day = date.getDayOfMonth();
 
         // Get the month as a string
-        String monthString = new Integer(month).toString();
+        String monthString = new Integer(month + 1).toString();
         if (month < 10) // Must make the string two digits wide
             monthString = "0" + monthString;
 
